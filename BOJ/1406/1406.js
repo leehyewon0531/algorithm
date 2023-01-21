@@ -1,3 +1,4 @@
+// 미완성
 const fs = require('fs');
 const input = fs.readFileSync('BOJ/test.txt').toString().trim().split('\n');
 const initStr = input[0].split('');
@@ -18,13 +19,13 @@ class Editor {
     this.cursor = null;
   }
 
-  insert(data) {
+  insert(node) {
     let current = this.head;
 
     if(this.empty()) {
-      this.head = data;
+      this.head = node;
       this.size++;
-      this.cursor = data;
+      this.cursor = node;
       return `Insertion is complete. The size is ${this.size}.`;
     }
 
@@ -35,9 +36,9 @@ class Editor {
       }
     }
 
-    current.next = data;
+    current.next = node;
     data.prev = current;
-    this.cursor = data;
+    this.cursor = node;
     return `Insertion is complete. The size is ${this.size}.`;
   }
 
@@ -74,6 +75,7 @@ class Editor {
     let current = this.head;
 
     while(current.next !== null) {
+      console.log(current);
       str += current.value;
       current = current.next;
     }
@@ -91,10 +93,11 @@ function solution() {
   const list = new Editor(firstNode);
 
   for(let i = 1; i < initStr.length - 1; i++) {
+    console.log(initStr[i]);
     list.insert(new Node(initStr[i]));
   }
 
-  console.log(list.returnStr());
+  list.returnStr();
   
 }
 
