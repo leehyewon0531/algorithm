@@ -1,4 +1,4 @@
-// 미완성
+// 미완성 -> insert 😣
 const fs = require('fs');
 const input = fs.readFileSync('BOJ/test.txt').toString().trim().split('\n');
 const initStr = input[0].split('');
